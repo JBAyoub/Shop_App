@@ -11,7 +11,7 @@ class ShopApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowMaterialGrid: false,
+      debugShowCheckedModeBanner: false,
       routes: {
         "shop_screen": (context) => ShopScreen(),
         "cart": (context) => ShopScreen(),
