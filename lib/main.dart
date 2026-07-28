@@ -12,16 +12,13 @@ class ShopApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {
-        "shop_screen": (context) => ShopScreen(),
-        "cart": (context) => ShopScreen(),
-      },
+      routes: {"shop_screen": (context) => ShopScreen()},
       initialRoute: "shop_screen",
-      home: ShopScreen(),
+      home: const ShopScreen(),
       theme: ThemeData(
         fontFamily: "Lato",
         useMaterial3: true,
-        inputDecorationTheme: InputDecorationTheme(
+        inputDecorationTheme: const InputDecorationTheme(
           hintStyle: TextStyle(fontWeight: .bold, fontSize: 16),
           prefixIconColor: Color.fromRGBO(119, 119, 119, 0.6),
         ),
@@ -29,9 +26,13 @@ class ShopApp extends StatelessWidget {
           seedColor: const Color.fromRGBO(254, 204, 1, 1),
           primary: const Color.fromRGBO(254, 204, 1, 1),
         ),
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           displayLarge: TextStyle(fontSize: 26, fontWeight: .bold),
-          displaySmall: TextStyle(fontSize: 16, fontWeight: .w500),
+          displaySmall: TextStyle(
+            fontSize: 16,
+            fontWeight: .w700,
+            color: Color.fromARGB(150, 5, 5, 5),
+          ),
         ),
       ),
     );

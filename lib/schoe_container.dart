@@ -23,23 +23,21 @@ class ShoeContainer extends StatelessWidget {
         color: color,
       ),
       margin: EdgeInsets.all(16),
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: .start,
-          children: [
-            Text(title, style: Theme.of(context).textTheme.displayLarge),
-            Text('€$price', style: Theme.of(context).textTheme.displaySmall),
-            Center(
-              child: Image(
-                height: 250,
-                filterQuality: .high,
-                isAntiAlias: true,
-                image: AssetImage(img),
-              ),
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: .start,
+        children: [
+          Text(title, style: Theme.of(context).textTheme.displayLarge),
+          Text('€$price', style: Theme.of(context).textTheme.displaySmall),
+          Center(
+            child: Image.asset(
+              img,
+              height: 250,
+              filterQuality: .high,
+              isAntiAlias: true,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
