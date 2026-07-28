@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/global_vars.dart';
+import 'package:shop_app/schoe_container.dart';
 
 class ShopScreen extends StatefulWidget {
   const ShopScreen({super.key});
@@ -92,6 +94,26 @@ class _ShopScreenState extends State<ShopScreen> {
                     );
                   },
                 ),
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                addRepaintBoundaries: true,
+                primary: true,
+                shrinkWrap: true,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                itemCount: products.length,
+                itemBuilder: (context, index) {
+                  final product = products[index];
+                  return ShoeContainer(
+                    title: product['title'],
+                    img: product["image"],
+                    price: product["price"] as double,
+                    color: index.isEven
+                        ? const Color.fromARGB(255, 175, 221, 233)
+                        : const Color.fromARGB(255, 234, 207, 242),
+                  );
+                },
               ),
             ),
           ],
