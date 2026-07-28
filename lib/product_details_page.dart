@@ -36,27 +36,19 @@ class ProductDetailsPage extends StatelessWidget {
                 height: 400,
               ),
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 20),
             Text("\$44.22", style: TextStyle(fontSize: 42, fontWeight: .w800)),
             SizedBox(
-              height: 30,
+              height: 40,
               child: ListView.builder(
                 scrollDirection: .horizontal,
                 itemCount: sizes.length,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.only(right: 10),
-                    child: OutlinedButton(
+                    child: Chip(
                       clipBehavior: .antiAliasWithSaveLayer,
-                      onPressed: () {},
-                      child: Text(
-                        "${sizes[index]}",
-                        style: TextStyle(
-                          fontWeight: .bold,
-                          fontSize: 10,
-                          color: Color.fromARGB(255, 0, 0, 0),
-                        ),
-                      ),
+                      label: Text("${sizes[index]}"),
                     ),
                   );
                 },
@@ -67,7 +59,7 @@ class ProductDetailsPage extends StatelessWidget {
               height: 50,
               child: FilledButton.icon(
                 icon: Icon(
-                  Icons.shopping_cart,
+                  Icons.shopping_cart_outlined,
                   size: 30,
                   color: const Color.fromARGB(255, 5, 5, 5),
                 ),
