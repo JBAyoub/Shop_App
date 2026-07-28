@@ -47,10 +47,15 @@ class ProductDetailsPage extends StatelessWidget {
                   return Container(
                     margin: EdgeInsets.only(right: 10),
                     child: OutlinedButton(
+                      clipBehavior: .antiAliasWithSaveLayer,
                       onPressed: () {},
                       child: Text(
                         "${sizes[index]}",
-                        style: Theme.of(context).textTheme.displaySmall,
+                        style: TextStyle(
+                          fontWeight: .bold,
+                          fontSize: 10,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
                       ),
                     ),
                   );
