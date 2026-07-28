@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/product_details_page.dart';
 import 'package:shop_app/shop_screen.dart';
 
 void main() {
@@ -12,9 +13,13 @@ class ShopApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {"shop_screen": (context) => ShopScreen()},
-      initialRoute: "shop_screen",
-      home: const ShopScreen(),
+      routes: {
+        "shop_screen": (context) => ShopScreen(),
+        "product_details_page": (context) => ProductDetailsPage(),
+      },
+
+      initialRoute: "product_details_page",
+      home: ProductDetailsPage(),
       theme: ThemeData(
         fontFamily: "Lato",
         useMaterial3: true,
