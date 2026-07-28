@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/global_vars.dart';
 
-class ProductDetailsPage extends StatelessWidget {
-  ProductDetailsPage({super.key});
+class ProductDetailsPage extends StatefulWidget {
+  const ProductDetailsPage({super.key});
+
+  @override
+  State<ProductDetailsPage> createState() => _ProductDetailsPageState();
+}
+
+class _ProductDetailsPageState extends State<ProductDetailsPage> {
   final sizes = products[0]["sizes"] as List<int>;
+  late int _selectedSize;
+  @override
+  void initState() {
+    super.initState();
+    _selectedSize = 0;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,11 +57,21 @@ class ProductDetailsPage extends StatelessWidget {
                 scrollDirection: .horizontal,
                 itemCount: sizes.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    margin: EdgeInsets.only(right: 10),
-                    child: Chip(
-                      clipBehavior: .antiAliasWithSaveLayer,
-                      label: Text("${sizes[index]}"),
+                  return Padding(
+                    padding: EdgeInsets.only(right: 10),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _selectedSize = index;
+                        });
+                      },
+                      child: Chip(
+                        backgroundColor: _selectedSize == index
+                            ? Theme.of(context).colorScheme.primary
+                            : const Color.fromARGB(100, 255, 255, 255),
+                        clipBehavior: .antiAliasWithSaveLayer,
+                        label: Text("${sizes[index]}"),
+                      ),
                     ),
                   );
                 },
@@ -57,7 +80,12 @@ class ProductDetailsPage extends StatelessWidget {
             SizedBox(
               width: double.maxFinite,
               height: 50,
-              child: FilledButton.icon(
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  elevation: 3,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  shadowColor: Color.fromARGB(255, 27, 27, 17),
+                ),
                 icon: Icon(
                   Icons.shopping_cart_outlined,
                   size: 30,
