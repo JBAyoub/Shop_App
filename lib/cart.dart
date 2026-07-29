@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/cart_provider.dart';
@@ -53,7 +52,7 @@ class _CartState extends State<Cart> {
                           style: Theme.of(context).textTheme.displayMedium,
                         ),
                         content: Text(
-                          "Are you sure you want to delte this product from the cart?",
+                          "Are you sure you want to delete this product from the cart?",
                           style: Theme.of(context).textTheme.displaySmall,
                           softWrap: true,
                         ),
