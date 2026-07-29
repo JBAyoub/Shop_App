@@ -12,6 +12,8 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
+    final cartItems = context.watch<CartProvider>().cartItems;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -22,9 +24,7 @@ class _CartState extends State<Cart> {
         child: ListView.builder(
           itemCount: Provider.of<CartProvider>(context).cartItems.length,
           itemBuilder: (context, index) {
-            final cartItem = Provider.of<CartProvider>(
-              context,
-            ).cartItems[index];
+            final cartItem = cartItems[index];
             return ListTile(
               dense: true,
               contentPadding: EdgeInsets.all(10),
@@ -59,10 +59,9 @@ class _CartState extends State<Cart> {
                         actions: [
                           TextButton(
                             onPressed: () {
-                              Provider.of<CartProvider>(
-                                context,
-                                listen: false,
-                              ).deleteProduct(cartItem);
+                              context.read<CartProvider>().deleteProduct(
+                                cartItem,
+                              );
                               Navigator.of(context).pop();
                             },
                             child: Text(
