@@ -4,7 +4,6 @@ import 'package:shop_app/product_list.dart';
 
 class ShopScreen extends StatefulWidget {
   const ShopScreen({super.key});
-
   @override
   State<ShopScreen> createState() => _ShopScreenState();
 }
@@ -22,7 +21,7 @@ class _ShopScreenState extends State<ShopScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _selectedScreen == 0 ? const ProductList() : Cart(),
+      body: IndexedStack(index: _selectedScreen, children: screens),
       bottomNavigationBar: BottomAppBar(
         elevation: 2,
         height: 60,
