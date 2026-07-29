@@ -36,7 +36,12 @@ class _ShopScreenState extends State<ShopScreen> {
                   _selectedScreen = 0;
                 });
               },
-              icon: Icon(Icons.home),
+              icon: Icon(
+                Icons.home_outlined,
+                color: _selectedScreen == 0
+                    ? Theme.of(context).colorScheme.primary
+                    : Colors.grey[800],
+              ),
             ),
             IconButton(
               iconSize: 30,
@@ -47,7 +52,12 @@ class _ShopScreenState extends State<ShopScreen> {
                   });
                 });
               },
-              icon: Icon(Icons.shopping_cart_outlined),
+              icon: Icon(
+                Icons.shopping_cart_outlined,
+                color: _selectedScreen == 1
+                    ? Theme.of(context).colorScheme.primary
+                    : Colors.grey[800],
+              ),
             ),
           ],
         ),
