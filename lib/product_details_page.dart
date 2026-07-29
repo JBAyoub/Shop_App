@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/global_vars.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  const ProductDetailsPage({super.key});
-
+  final Map<String, dynamic> product;
+  const ProductDetailsPage({super.key, required this.product});
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
-  final sizes = products[0]["sizes"] as List<int>;
+  List<int> get sizes => widget.product["sizes"] as List<int>;
   late int _selectedSize;
   @override
   void initState() {
@@ -34,7 +33,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           spacing: 20,
           children: [
             Text(
-              "Placeholder name",
+              widget.product['title'] as String,
               style: TextStyle(fontSize: 36, fontWeight: .bold),
             ),
             Container(
@@ -44,13 +43,16 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 color: const Color.fromARGB(125, 192, 235, 234),
               ),
               child: Image.asset(
-                "assets/images/shoe_3.jpg",
+                widget.product['image'] as String,
                 fit: .cover,
                 height: 400,
               ),
             ),
             SizedBox(height: 20),
-            Text("\$44.22", style: TextStyle(fontSize: 42, fontWeight: .w800)),
+            Text(
+              "\$${widget.product['price'] as double}",
+              style: TextStyle(fontSize: 42, fontWeight: .w800),
+            ),
             SizedBox(
               height: 40,
               child: ListView.builder(

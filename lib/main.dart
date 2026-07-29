@@ -13,13 +13,9 @@ class ShopApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {
-        "shop_screen": (context) => ShopScreen(),
-        "product_details_page": (context) => ProductDetailsPage(),
-      },
+      home: ShopScreen(),
 
-      initialRoute: "product_details_page",
-      home: ProductDetailsPage(),
+      initialRoute: "shop_screen",
       theme: ThemeData(
         fontFamily: "Lato",
         useMaterial3: true,

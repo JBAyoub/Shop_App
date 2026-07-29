@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/bottom_navigation_component.dart';
 import 'package:shop_app/global_vars.dart';
+import 'package:shop_app/product_details_page.dart';
 import 'package:shop_app/schoe_container.dart';
 
 class ShopScreen extends StatefulWidget {
@@ -105,13 +107,24 @@ class _ShopScreenState extends State<ShopScreen> {
                 itemCount: products.length,
                 itemBuilder: (context, index) {
                   final product = products[index];
-                  return ShoeContainer(
-                    title: product['title'],
-                    img: product["image"],
-                    price: product["price"] as double,
-                    color: index.isEven
-                        ? const Color.fromARGB(255, 175, 221, 233)
-                        : const Color.fromARGB(255, 234, 207, 242),
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ProductDetailsPage(product: product);
+                          },
+                        ),
+                      );
+                    },
+                    child: ShoeContainer(
+                      title: product['title'],
+                      img: product["image"],
+                      price: product["price"] as double,
+                      color: index.isEven
+                          ? const Color.fromARGB(255, 175, 221, 233)
+                          : const Color.fromARGB(255, 234, 207, 242),
+                    ),
                   );
                 },
               ),
@@ -119,6 +132,8 @@ class _ShopScreenState extends State<ShopScreen> {
           ],
         ),
       ),
+
+      bottomNavigationBar: BottomNavigationComponent(),
     );
   }
 }
