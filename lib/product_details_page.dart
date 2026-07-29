@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/cart_provider.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   final Map<String, dynamic> product;
@@ -10,6 +12,16 @@ class ProductDetailsPage extends StatefulWidget {
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   List<int> get sizes => widget.product["sizes"] as List<int>;
   late int _selectedSize;
+
+  void onPressed() {
+    Provider.of<CartProvider>(
+      context,
+    ).addProduct({...widget.product, "Size": sizes[_selectedSize]});
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Product added to cart successfully")),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -93,7 +105,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   size: 30,
                   color: const Color.fromARGB(255, 5, 5, 5),
                 ),
-                onPressed: () {},
+                onPressed: onPressed,
                 label: Text(
                   "Add to to cart",
                   style: Theme.of(context).textTheme.displaySmall,

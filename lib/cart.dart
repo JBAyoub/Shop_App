@@ -35,7 +35,7 @@ class _CartState extends State<Cart> {
                 cartItem['title'],
                 style: Theme.of(context).textTheme.displayMedium,
               ),
-              subtitle: Text('${cartItem["sizes"][0]}'),
+              subtitle: Text('Size: ${cartItem["sizes"][0]}'),
               trailing: IconButton(
                 padding: EdgeInsets.only(bottom: 10),
                 iconSize: 35,
