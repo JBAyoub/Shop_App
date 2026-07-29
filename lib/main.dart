@@ -27,6 +27,7 @@ class ShopApp extends StatelessWidget {
           primary: const Color.fromRGBO(254, 204, 1, 1),
         ),
         textTheme: const TextTheme(
+          displayMedium: TextStyle(fontSize: 20, fontWeight: .w600),
           displayLarge: TextStyle(fontSize: 26, fontWeight: .bold),
           displaySmall: TextStyle(
             fontSize: 16,
