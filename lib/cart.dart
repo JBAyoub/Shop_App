@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/global_vars.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/cart_provider.dart';
 
 class Cart extends StatefulWidget {
   const Cart({super.key});
@@ -19,9 +21,11 @@ class _CartState extends State<Cart> {
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         child: ListView.builder(
-          itemCount: cartItems.length,
+          itemCount: Provider.of<CartProvider>(context).cartItems.length,
           itemBuilder: (context, index) {
-            final cartItem = cartItems[index];
+            final cartItem = Provider.of<CartProvider>(
+              context,
+            ).cartItems[index];
             return ListTile(
               dense: true,
               contentPadding: EdgeInsets.all(10),
@@ -35,11 +39,54 @@ class _CartState extends State<Cart> {
                 cartItem['title'],
                 style: Theme.of(context).textTheme.displayMedium,
               ),
-              subtitle: Text('Size: ${cartItem["sizes"][0]}'),
+              subtitle: Text('Size: ${cartItem["Size"]}'),
               trailing: IconButton(
                 padding: EdgeInsets.only(bottom: 10),
                 iconSize: 35,
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog.adaptive(
+                        title: Text(
+                          "Delete Product",
+                          style: Theme.of(context).textTheme.displayMedium,
+                        ),
+                        content: Text(
+                          "Are you sure you want to delte this product from the cart?",
+                          style: Theme.of(context).textTheme.displaySmall,
+                          softWrap: true,
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Provider.of<CartProvider>(
+                                context,
+                                listen: false,
+                              ).deleteProduct(cartItem);
+                              Navigator.of(context).pop();
+                            },
+                            child: Text(
+                              "Yes",
+                              style: TextStyle(color: Colors.blueAccent),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text(
+                              "No",
+                              style: TextStyle(
+                                color: const Color.fromARGB(255, 221, 82, 82),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
                 icon: Icon(Icons.delete_outline_rounded, color: Colors.red),
               ),
             );

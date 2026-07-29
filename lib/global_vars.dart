@@ -40,22 +40,3 @@ List<Map<String, dynamic>> products = [
     "sizes": [6, 7, 8, 9, 10],
   },
 ];
-
-List<Map<String, dynamic>> cartItems = [
-  {
-    "id": 4,
-    "title": "Men's shoes 5",
-    "image": "assets/images/shoe_5.jpg",
-    "company": "nike",
-    "price": 42.7,
-    "sizes": [9, 7, 8, 9, 10],
-  },
-  {
-    "id": 5,
-    "title": "Men's shoes 6",
-    "image": "assets/images/shoe_3.jpg",
-    "company": "nike",
-    "price": 42.7,
-    "sizes": [6, 7, 8, 9, 10],
-  },
-];

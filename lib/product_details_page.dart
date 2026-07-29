@@ -16,6 +16,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   void onPressed() {
     Provider.of<CartProvider>(
       context,
+      listen: false,
     ).addProduct({...widget.product, "Size": sizes[_selectedSize]});
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text("Product added to cart successfully")),
