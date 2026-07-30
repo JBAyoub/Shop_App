@@ -72,6 +72,7 @@ class _ProductListState extends State<ProductList> {
                   return GestureDetector(
                     onTap: () {
                       setState(() {
+                        _selectedFilter = _filters[index];
                         context.read<ProductProvider>().setFilter(
                           _filters[index],
                         );
