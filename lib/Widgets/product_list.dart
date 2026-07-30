@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop_app/product_details_page.dart';
-import 'package:shop_app/product_provider.dart';
-import 'package:shop_app/schoe_container.dart';
+import 'package:shop_app/Pages/product_details_page.dart';
+import 'package:shop_app/Providers/product_provider.dart';
+import 'package:shop_app/Widgets/schoe_container.dart';
 
 class ProductList extends StatefulWidget {
   const ProductList({super.key});

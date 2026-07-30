@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop_app/cart_provider.dart';
-import 'package:shop_app/product_provider.dart';
-import 'package:shop_app/shop_screen.dart';
+import 'package:shop_app/Providers/cart_provider.dart';
+import 'package:shop_app/Providers/product_provider.dart';
+import 'package:shop_app/Pages/shop_screen.dart';
 
 void main() {
   runApp(const ShopApp());

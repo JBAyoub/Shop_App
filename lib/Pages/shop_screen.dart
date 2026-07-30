@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/cart.dart';
-import 'package:shop_app/product_list.dart';
+import 'package:shop_app/Pages/cart.dart';
+import 'package:shop_app/Widgets/product_list.dart';
 
 class ShopScreen extends StatefulWidget {
   const ShopScreen({super.key});
