@@ -22,7 +22,10 @@ class _CartState extends State<Cart> {
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         child: ListView.builder(
-          itemCount: Provider.of<CartProvider>(context).cartItems.length,
+          itemCount: Provider.of<CartProvider>(
+            context,
+            listen: false,
+          ).cartItems.length,
           itemBuilder: (context, index) {
             final cartItem = cartItems[index];
             return ListTile(

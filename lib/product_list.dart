@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/global_vars.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_app/product_details_page.dart';
+import 'package:shop_app/product_provider.dart';
 import 'package:shop_app/schoe_container.dart';
 
 class ProductList extends StatefulWidget {
@@ -13,6 +14,7 @@ class ProductList extends StatefulWidget {
 class _ProductListState extends State<ProductList> {
   final List<String> _filters = const ["All", "Nike", "Adidas", "Bata"];
   late String _selectedFilter;
+
   final outlineInputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.horizontal(left: Radius.circular(50)),
     borderSide: BorderSide(color: Color.fromRGBO(225, 225, 225, 1), width: 2),
@@ -21,6 +23,7 @@ class _ProductListState extends State<ProductList> {
     borderRadius: BorderRadius.horizontal(left: Radius.circular(50)),
     borderSide: BorderSide(color: Color.fromRGBO(245, 116, 116, 1), width: 2),
   );
+
   @override
   void initState() {
     super.initState();
@@ -29,6 +32,8 @@ class _ProductListState extends State<ProductList> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<ProductProvider>();
+
     return SafeArea(
       child: Column(
         children: [
@@ -67,9 +72,12 @@ class _ProductListState extends State<ProductList> {
                   return GestureDetector(
                     onTap: () {
                       setState(() {
-                        _selectedFilter = _filters[index];
+                        context.read<ProductProvider>().setFilter(
+                          _filters[index],
+                        );
                       });
                     },
+
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Chip(
@@ -102,9 +110,9 @@ class _ProductListState extends State<ProductList> {
               primary: true,
               shrinkWrap: true,
               clipBehavior: Clip.antiAliasWithSaveLayer,
-              itemCount: products.length,
+              itemCount: provider.filteredProducts.length,
               itemBuilder: (context, index) {
-                final product = products[index];
+                final product = provider.filteredProducts[index];
                 return GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(
