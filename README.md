@@ -1,6 +1,10 @@
 # Shop App
 
 A Flutter shopping application built to practice Flutter fundamentals, state management with Provider, widget composition, navigation, and responsive UI development.
+<img width="423" height="945" alt="image" src="https://github.com/user-attachments/assets/c43cf724-7c78-4bda-a74b-d6fe8f9212af" />
+<img width="418" height="934" alt="image" src="https://github.com/user-attachments/assets/941610b6-ecf2-48d2-a01e-81a696a0c869" />
+<img width="420" height="934" alt="image" src="https://github.com/user-attachments/assets/a9a5fb15-f9fc-4afe-b637-087f9620dfc6" />
+<img width="420" height="941" alt="image" src="https://github.com/user-attachments/assets/9b3737e0-523b-4bc6-9215-d4cb6630466f" />
 
 ## Features
 
